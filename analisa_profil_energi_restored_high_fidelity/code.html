@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EMS Enterprise - Energy Profile Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#213145",
+                        "outline": "#76777d",
+                        "surface-container-low": "#eff4ff",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#002113",
+                        "surface": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-variant": "#d3e4fe",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed": "#002113",
+                        "on-surface-variant": "#45464d",
+                        "tertiary": "#000000",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "secondary-fixed": "#d8e2ff",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "primary": "#000000",
+                        "on-secondary-container": "#fefcff",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-container": "#7c839b",
+                        "on-surface": "#0b1c30",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-container": "#2170e4",
+                        "primary-container": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-tertiary-container": "#009668",
+                        "on-secondary-fixed": "#001a42",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-tint": "#565e74",
+                        "primary-fixed": "#dae2fd",
+                        "background": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "secondary": "#0058be",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "container-padding": "24px",
+                        "margin-page": "32px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "data-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "data-lg": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container { position: relative; height: 300px; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased overflow-x-hidden">
+<!-- Sidebar Shell -->
+<aside class="w-[260px] h-screen fixed left-0 top-0 bg-primary dark:bg-primary-container shadow-sm flex flex-col py-stack-lg z-50 transition-all duration-200 ease-in-out">
+<div class="px-gutter mb-stack-lg">
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary dark:text-inverse-primary">EMS Enterprise</h1>
+<p class="font-body-md text-body-md text-on-primary/70">Reliable monitoring</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-primary/70 hover:bg-primary-fixed-dim/20 transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+            Dashboard
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded bg-secondary text-on-secondary font-bold font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+            Energy Profile
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-primary/70 hover:bg-primary-fixed-dim/20 transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="ev_station">ev_station</span>
+            Real-time EV Monitoring
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-primary/70 hover:bg-primary-fixed-dim/20 transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+            Reports &amp; Audit
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-primary/70 hover:bg-primary-fixed-dim/20 transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+            Admin Settings
+        </a>
+</nav>
+<div class="px-6 py-4 mt-auto border-t border-on-primary/10 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed">person</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-primary">Admin User</p>
+<p class="text-[10px] text-on-primary/60">Plant Manager</p>
+</div>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-260px)] h-16 bg-surface dark:bg-background flex justify-between items-center px-gutter border-b border-outline-variant dark:border-outline z-40">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md font-bold text-primary dark:text-on-background">Analisa Profil Energi</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-on-surface-variant cursor-pointer hover:bg-surface-container-low p-2 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="partly_cloudy_day">partly_cloudy_day</span>
+<span class="font-body-md text-body-md">24°C</span>
+</div>
+<div class="relative cursor-pointer hover:bg-surface-container-low p-2 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<img alt="User profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCssNjHInAiceGXP6kpgMkOndPayvbu358J2gUowRUDdtl4zfwKuLhMppAt8sOCvsl8oNjKTkeaQsOy1XBrGLmdg4fVT-LNTpRvMx_IU4WNbPSq1HwXns9NOWKwn_LxUZzcaEKbi6KfuqufAThkQgWiI-rEwe8dBR7KLLGzYti-aBAvb1MRA0WPIEuUKbsjzx6Wj7rpoLhlKv80azSrMtELBtQMx_UxwqCHBEfn3GzmOf195COxC1EajQpVHnqoddxByT7bUS19I6nP"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-[260px] pt-16 min-h-screen bg-surface">
+<div class="p-margin-page space-y-gutter max-w-[1400px] mx-auto">
+<!-- Filter Bar Section -->
+<section class="bg-surface-container-lowest rounded-lg shadow-sm border border-outline-variant p-container-padding">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-4 uppercase tracking-wider">Filter Analisa:</h3>
+<div class="flex flex-wrap gap-4 items-end">
+<div class="flex-1 min-w-[200px]">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Pilih Periode..</label>
+<select class="w-full bg-surface border border-outline-variant rounded px-4 py-2 font-body-md focus:ring-secondary focus:border-secondary">
+<option>7 Hari Terakhir</option>
+<option>30 Hari Terakhir</option>
+<option>Bulan Ini</option>
+<option>Kustom...</option>
+</select>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Kategori: (Semua Beban)</label>
+<select class="w-full bg-surface border border-outline-variant rounded px-4 py-2 font-body-md focus:ring-secondary focus:border-secondary">
+<option>Semua Beban</option>
+<option>Penerangan</option>
+<option>HVAC</option>
+<option>Produksi</option>
+</select>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Bandingkan: Minggu Lalu</label>
+<select class="w-full bg-surface border border-outline-variant rounded px-4 py-2 font-body-md focus:ring-secondary focus:border-secondary">
+<option>Minggu Lalu</option>
+<option>Tahun Lalu</option>
+<option>Target Baseline</option>
+</select>
+</div>
+<button class="bg-primary text-on-primary px-8 py-2 rounded font-headline-md font-semibold hover:opacity-90 transition-all active:scale-95">
+                    [ Terapkan ]
+                </button>
+</div>
+</section>
+<!-- KPI Cards Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Total kWh Current -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding shadow-sm hover:shadow-md transition-all">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase mb-2">Total kWh Periode Ini</p>
+<div class="flex items-baseline gap-2">
+<h3 class="font-data-lg text-data-lg text-on-surface">12,482</h3>
+<span class="font-body-md text-on-surface-variant">kWh</span>
+</div>
+<div class="mt-4 flex items-center gap-1 text-on-primary-fixed-variant">
+<span class="font-label-md text-label-md border-b border-dotted border-current">Value Saat Ini</span>
+</div>
+</div>
+<!-- Total kWh Previous -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding shadow-sm hover:shadow-md transition-all">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase mb-2">Total kWh Periode Lalu</p>
+<div class="flex items-baseline gap-2 text-on-surface-variant/80">
+<h3 class="font-data-lg text-data-lg">11,205</h3>
+<span class="font-body-md">kWh</span>
+</div>
+<div class="mt-4 flex items-center gap-1 text-on-surface-variant">
+<span class="font-label-md text-label-md border-b border-dotted border-current">Value Lalu</span>
+</div>
+</div>
+<!-- Efficiency Status -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding shadow-sm hover:shadow-md transition-all">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase mb-2">Status Efisiensi (+ / -)</p>
+<div class="flex items-baseline gap-2 text-error">
+<h3 class="font-data-lg text-data-lg">+11.4</h3>
+<span class="font-body-md">%</span>
+</div>
+<div class="mt-4 flex items-center gap-1 text-error">
+<span class="font-label-md text-label-md border-b border-dotted border-current">Naik/Turun %</span>
+</div>
+</div>
+</section>
+<!-- Chart Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding shadow-sm">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-stack-lg gap-4">
+<h4 class="font-headline-md text-headline-md text-on-surface">[Grafik Garis: Perbandingan Periode Ini vs Periode Lalu]</h4>
+<div class="flex flex-wrap gap-4 font-label-md text-label-md">
+<div class="flex items-center gap-2">
+<span class="w-4 h-1 bg-primary"></span>
+<span>Periode Saat Ini</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-4 h-1 bg-outline-variant border-b border-dotted border-outline"></span>
+<span>Periode Lalu</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-4 h-1 border-b-2 border-dashed border-on-surface"></span>
+<span>Batas Baseline</span>
+</div>
+</div>
+</div>
+<div class="chart-container w-full bg-surface/30 rounded border border-outline-variant/30 flex flex-col justify-end px-4 pb-8 pt-4 overflow-hidden">
+<!-- SVG Visual Mock of Line Chart -->
+<svg class="absolute inset-0 w-full h-full p-4 overflow-visible" preserveaspectratio="none" viewbox="0 0 1000 300">
+<!-- Baseline -->
+<line stroke="#000000" stroke-dasharray="8,8" stroke-width="2" x1="0" x2="1000" y1="120" y2="120"></line>
+<text class="font-label-md text-[10px]" fill="#000000" x="950" y="115">Baseline</text>
+<!-- Previous Period (Dotted/Lighter Line) -->
+<path d="M0,240 L150,220 L300,200 L450,140 L600,160 L750,180 L900,220 L1000,250" fill="none" stroke="#c6c6cd" stroke-dasharray="4,4" stroke-width="2"></path>
+<!-- Current Period (Solid Bold Line) -->
+<path d="M0,260 L150,230 L300,210 L450,150 L600,170 L750,155 L900,240 L1000,280" fill="none" stroke="#000000" stroke-width="3"></path>
+<!-- Axis Line -->
+<line stroke="#76777d" stroke-width="1" x1="0" x2="1000" y1="290" y2="290"></line>
+</svg>
+<!-- X-Axis Labels -->
+<div class="relative z-10 flex justify-between font-label-md text-on-surface-variant text-[10px] uppercase tracking-tighter mt-4">
+<span>Waktu/Hari</span>
+<span>Waktu/Hari</span>
+<span>Waktu/Hari</span>
+<span>Waktu/Hari</span>
+<span>Waktu/Hari</span>
+</div>
+</div>
+</section>
+<!-- Detailed Table Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm overflow-hidden">
+<div class="p-container-padding border-b border-outline-variant bg-surface-container-low/20">
+<h4 class="font-headline-md text-headline-md text-on-surface">[Tabel Rincian Breakdown Waktu]</h4>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md border-collapse">
+<thead class="bg-surface-container-low text-on-surface-variant font-label-md uppercase tracking-wide">
+<tr>
+<th class="px-gutter py-4 border-b border-outline-variant">Waktu / Tanggal</th>
+<th class="px-gutter py-4 border-b border-outline-variant">Penggunaan Saat Ini</th>
+<th class="px-gutter py-4 border-b border-outline-variant">Penggunaan Lalu</th>
+<th class="px-gutter py-4 border-b border-outline-variant">Selisih KWh</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-gutter py-4 font-semibold text-on-surface border-r border-outline-variant/30">24 Okt 2023</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30">1,842 kWh</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30 text-on-surface-variant">1,620 kWh</td>
+<td class="px-gutter py-4 text-error font-bold">+222 kWh</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-gutter py-4 font-semibold text-on-surface border-r border-outline-variant/30">25 Okt 2023</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30">1,710 kWh</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30 text-on-surface-variant">1,805 kWh</td>
+<td class="px-gutter py-4 text-on-tertiary-container font-bold">-95 kWh</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-gutter py-4 font-semibold text-on-surface border-r border-outline-variant/30">26 Okt 2023</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30">2,050 kWh</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30 text-on-surface-variant">1,910 kWh</td>
+<td class="px-gutter py-4 text-error font-bold">+140 kWh</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-gutter py-4 font-semibold text-on-surface border-r border-outline-variant/30">27 Okt 2023</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30">1,980 kWh</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30 text-on-surface-variant">2,100 kWh</td>
+<td class="px-gutter py-4 text-on-tertiary-container font-bold">-120 kWh</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-container-padding border-t border-outline-variant flex justify-between items-center bg-surface-container-low/10">
+<button class="text-secondary font-label-md hover:underline flex items-center gap-2 px-4 py-2 border border-outline-variant rounded bg-surface-container-lowest">
+<span class="material-symbols-outlined text-sm">download</span> Ekspor Data (CSV)
+                </button>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual Insight Overlay -->
+<div class="fixed bottom-gutter right-gutter w-80 bg-inverse-surface text-inverse-on-surface p-container-padding rounded-lg shadow-2xl z-50 border border-outline/20">
+<div class="flex items-center justify-between mb-2">
+<span class="font-headline-md text-[16px] font-bold">Wawasan Efisiensi</span>
+<span class="material-symbols-outlined cursor-pointer text-surface-variant hover:text-white" onclick="this.parentElement.parentElement.remove()">close</span>
+</div>
+<p class="font-body-md text-[13px] opacity-90 leading-relaxed">
+        Penggunaan energi Anda melonjak 11.4% dibandingkan minggu lalu. Mayoritas kenaikan terdeteksi pada klaster <b>Produksi Lantai 2</b> selama jam sibuk (10:00 - 14:00).
+    </p>
+<button class="mt-4 w-full py-2 bg-secondary text-on-secondary rounded font-label-md uppercase tracking-wider hover:brightness-110 transition-all">Investigasi Detail</button>
+</div>
+<!-- Atmospheric Grid Effect -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.02] z-[-1]">
+<div class="absolute inset-0" style="background-image: radial-gradient(#0058be 1px, transparent 1px); background-size: 40px 40px;"></div>
+</div>
+<script>
+    // Micro-interactions for KPI cards
+    document.querySelectorAll('section.grid > div').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-4px)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
+</script>
+</body></html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Report &amp; Audit - Precision Enterprise EMS</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols for Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#213145",
+                        "outline": "#76777d",
+                        "surface-container-low": "#eff4ff",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#002113",
+                        "surface": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-variant": "#d3e4fe",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed": "#002113",
+                        "on-surface-variant": "#45464d",
+                        "tertiary": "#000000",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "secondary-fixed": "#d8e2ff",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "primary": "#000000",
+                        "on-secondary-container": "#fefcff",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-container": "#7c839b",
+                        "on-surface": "#0b1c30",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-container": "#2170e4",
+                        "primary-container": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-tertiary-container": "#009668",
+                        "on-secondary-fixed": "#001a42",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-tint": "#565e74",
+                        "primary-fixed": "#dae2fd",
+                        "background": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "secondary": "#0058be",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "container-padding": "24px",
+                        "margin-page": "32px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "data-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "data-lg": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased overflow-x-hidden">
+<!-- Sidebar Shell -->
+<aside class="w-[260px] h-screen fixed left-0 top-0 bg-primary dark:bg-primary-container shadow-sm flex flex-col py-stack-lg z-50 transition-all duration-200 ease-in-out">
+<div class="px-gutter mb-stack-lg">
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary dark:text-inverse-primary">EMS Enterprise</h1>
+<p class="font-body-md text-body-md text-on-primary/70">Reliable monitoring</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-primary/70 hover:bg-primary-fixed-dim/20 transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-primary/70 hover:bg-primary-fixed-dim/20 transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Energy Profile
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-primary/70 hover:bg-primary-fixed-dim/20 transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="ev_station">ev_station</span>
+                Real-time EV Monitoring
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded bg-secondary text-on-secondary font-bold font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="assessment" style="font-variation-settings: 'FILL' 1;">assessment</span>
+                Reports &amp; Audit
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-on-primary/70 hover:bg-primary-fixed-dim/20 transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Admin Settings
+            </a>
+</nav>
+<div class="px-6 py-4 mt-auto border-t border-on-primary/10 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5q4VfCQLmfOeLo9iUCRK3DOHHfb13ERACauJz6ISlR7zedwQqXIdckmh_oC-y2tVy6ZfOIo7Wgic_Q98wLt0Dwzxqz34tnWyTSDElyrnL7rCoH4tpf08hIzE9j1vY7YYY7NCg1YOFMkbz5cxv9zwyWwVJ0xv_dvu1D-xY16p1wjDfE5w5me2CZu9LhnJks9sG99OlT7_yjp8u03GpdcAiCS3XAUGp0_YwUl6shYoclKuscU42XFaXWqNSiKjKfNnYE7gIoBlT4vcq"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-primary">Admin User</p>
+<p class="text-[10px] text-on-primary/60">System Manager</p>
+</div>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-260px)] h-16 bg-surface dark:bg-background flex justify-between items-center px-gutter border-b border-outline-variant dark:border-outline z-40">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md font-bold text-primary dark:text-on-background">Report &amp; Audit Keuangan / Energi</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-on-surface-variant cursor-pointer hover:bg-surface-container-low p-2 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="partly_cloudy_day">partly_cloudy_day</span>
+<span class="font-body-md text-body-md">28°C Jakarta</span>
+</div>
+<div class="relative cursor-pointer hover:bg-surface-container-low p-2 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<img alt="User profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrEn1XVZCKHL7LdkX-pxIPDbSSiumFFzX0jVZUm_QBRPlcHCcQjuKjWt0zNXJSwSMJ8Ete1lQGCVBC_lYWSiMraNCp3EWOmQOZTKVY2fVFXlealJp9CtZMfmpB_B9CQqZ-JK6a6hzdMoIzXYOx4IHIqLzyjxNePXcDEy84mFGL_a-W-s_SWe0CryYk9GM_c6bYqsoRe0HmHdbib-Ars-TDny2U8D2toCFBP3K6OK11C7GmoGO7ADQD3bUinmAupnlY05g93cYNljol"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-[260px] pt-16 min-h-screen bg-surface">
+<div class="p-margin-page space-y-gutter max-w-[1400px] mx-auto">
+<!-- Filter Bar Section -->
+<section class="bg-surface-container-lowest rounded-lg shadow-sm border border-outline-variant p-container-padding" data-purpose="report-generator-panel">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-4 uppercase tracking-wider">Pilih Jenis Laporan:</h3>
+<div class="flex flex-wrap gap-4 items-end">
+<div class="flex-1 min-w-[200px]">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Pilih Jenis Laporan</label>
+<select class="w-full bg-surface border border-outline-variant rounded px-4 py-2 font-body-md focus:ring-secondary focus:border-secondary">
+<option>Audit Keuangan (BPK)</option>
+<option>Efisiensi Energi Bulanan</option>
+<option>Rekapitulasi Transaksi EV</option>
+</select>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Rentang Waktu</label>
+<div class="relative">
+<input class="w-full bg-surface border border-outline-variant rounded pl-10 pr-4 py-2 font-body-md focus:ring-secondary focus:border-secondary" type="text" value="01 Mei - 31 Mei 2024"/>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-lg">calendar_today</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-8 py-2.5 rounded font-headline-md font-semibold hover:opacity-90 transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">search</span>
+                        [ Tampilkan ]
+                    </button>
+<div class="flex-1 text-right">
+<button class="inline-flex items-center gap-2 px-6 py-2.5 border border-dashed border-outline-variant text-on-surface-variant rounded hover:bg-surface-container-low transition-all font-label-md uppercase tracking-wide">
+<span class="material-symbols-outlined text-secondary">ios_share</span>
+                            Export as PDF / Excel
+                        </button>
+</div>
+</div>
+</section>
+<!-- KPI Cards Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter" data-purpose="summary-statistics">
+<!-- Total kWh Current -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start mb-2">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Total kWh (Periode Terpilih)</p>
+<span class="material-symbols-outlined text-secondary">electric_bolt</span>
+</div>
+<div class="flex items-baseline gap-2">
+<h3 class="font-data-lg text-data-lg text-on-surface">12,450.82</h3>
+<span class="font-body-md text-on-surface-variant">kWh</span>
+</div>
+<div class="mt-4 flex items-center gap-1 text-on-tertiary-container font-medium">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+<span class="font-label-md text-label-md">4.2% dibanding bulan lalu</span>
+</div>
+</div>
+<!-- Estimasi Tagihan -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start mb-2">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Estimasi Tagihan PLN (Pengeluaran)</p>
+<span class="material-symbols-outlined text-error">payments</span>
+</div>
+<div class="flex items-baseline gap-2 text-on-surface">
+<h3 class="font-data-lg text-data-lg">Rp. 18.245.000</h3>
+</div>
+<div class="mt-4 flex items-center gap-1 text-on-surface-variant">
+<span class="font-label-md text-label-md">Berdasarkan Tarif Golongan B3/TM</span>
+</div>
+</div>
+<!-- Total Pemasukan -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-container-padding shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start mb-2">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase">Total Pemasukan EV Charging</p>
+<span class="material-symbols-outlined text-on-tertiary-container">account_balance_wallet</span>
+</div>
+<div class="flex items-baseline gap-2 text-on-surface">
+<h3 class="font-data-lg text-data-lg">Rp. 24.120.500</h3>
+</div>
+<div class="mt-4 flex items-center gap-1 text-on-tertiary-container font-medium">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+<span class="font-label-md text-label-md">12.8% target tercapai</span>
+</div>
+</div>
+</section>
+<!-- Audit Trail Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm overflow-hidden" data-purpose="audit-trail-section">
+<div class="p-container-padding border-b border-outline-variant bg-surface-container-low/20 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<h4 class="font-headline-md text-headline-md text-on-surface">[Audit Trail - Rekam Jejak Transaksi &amp; Konsumsi]</h4>
+<div class="relative w-full md:w-72">
+<input class="w-full bg-surface border border-outline-variant rounded px-10 py-2 font-body-md text-sm focus:ring-secondary focus:border-secondary" placeholder="Cari ID Bukti / Tanggal..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-2 text-on-surface-variant">search</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md border-collapse">
+<thead class="bg-surface-container-low text-on-surface-variant font-label-md uppercase tracking-wide">
+<tr>
+<th class="px-gutter py-4 border-b border-outline-variant">Tanggal</th>
+<th class="px-gutter py-4 border-b border-outline-variant">Tipe Log</th>
+<th class="px-gutter py-4 border-b border-outline-variant">Deskripsi / ID User</th>
+<th class="px-gutter py-4 border-b border-outline-variant">Nominal Daya (kWh)</th>
+<th class="px-gutter py-4 border-b border-outline-variant">Nominal Rupiah (Rp)</th>
+<th class="px-gutter py-4 border-b border-outline-variant">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-gutter py-4 text-on-surface-variant border-r border-outline-variant/30">28 Mei 2024, 08:30</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30">
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant rounded-full text-[11px] font-bold uppercase tracking-tighter">Konsumsi Harian</span>
+</td>
+<td class="px-gutter py-4 font-semibold text-on-surface border-r border-outline-variant/30">Gedung Utama - AC Central L1</td>
+<td class="px-gutter py-4 text-on-surface-variant border-r border-outline-variant/30">450.2</td>
+<td class="px-gutter py-4 text-error font-bold border-r border-outline-variant/30">(Pengeluaran)</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center gap-1.5 text-on-tertiary-container font-bold">
+<span class="w-2 h-2 bg-on-tertiary-container rounded-full"></span> Tercatat
+                                    </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-gutter py-4 text-on-surface-variant border-r border-outline-variant/30">28 Mei 2024, 09:15</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30">
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-[11px] font-bold uppercase tracking-tighter">Payment Masuk</span>
+</td>
+<td class="px-gutter py-4 font-semibold text-on-surface border-r border-outline-variant/30">ID: USR-105 (EV Charge)</td>
+<td class="px-gutter py-4 text-on-surface-variant border-r border-outline-variant/30">22.5</td>
+<td class="px-gutter py-4 text-on-tertiary-container font-bold border-r border-outline-variant/30">+ Rp. 55.000</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center gap-1.5 text-secondary font-bold">
+<span class="w-2 h-2 bg-secondary rounded-full"></span> Sukses
+                                    </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-gutter py-4 text-on-surface-variant border-r border-outline-variant/30">27 Mei 2024, 14:20</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30">
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-[11px] font-bold uppercase tracking-tighter">Payment Masuk</span>
+</td>
+<td class="px-gutter py-4 font-semibold text-on-surface border-r border-outline-variant/30">ID: USR-098 (EV Charge)</td>
+<td class="px-gutter py-4 text-on-surface-variant border-r border-outline-variant/30">35.0</td>
+<td class="px-gutter py-4 text-on-tertiary-container font-bold border-r border-outline-variant/30">+ Rp. 87.500</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center gap-1.5 text-secondary font-bold">
+<span class="w-2 h-2 bg-secondary rounded-full"></span> Sukses
+                                    </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-gutter py-4 text-on-surface-variant border-r border-outline-variant/30">27 Mei 2024, 18:00</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30">
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant rounded-full text-[11px] font-bold uppercase tracking-tighter">Konsumsi Harian</span>
+</td>
+<td class="px-gutter py-4 font-semibold text-on-surface border-r border-outline-variant/30">Panel Lampu Parkir B1</td>
+<td class="px-gutter py-4 text-on-surface-variant border-r border-outline-variant/30">120.8</td>
+<td class="px-gutter py-4 text-error font-bold border-r border-outline-variant/30">(Pengeluaran)</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center gap-1.5 text-on-tertiary-container font-bold">
+<span class="w-2 h-2 bg-on-tertiary-container rounded-full"></span> Tercatat
+                                    </span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-gutter py-4 text-on-surface-variant border-r border-outline-variant/30">27 Mei 2024, 20:10</td>
+<td class="px-gutter py-4 border-r border-outline-variant/30">
+<span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-[11px] font-bold uppercase tracking-tighter">Payment Masuk</span>
+</td>
+<td class="px-gutter py-4 font-semibold text-on-surface border-r border-outline-variant/30">ID: USR-211 (EV Charge)</td>
+<td class="px-gutter py-4 text-on-surface-variant border-r border-outline-variant/30">18.4</td>
+<td class="px-gutter py-4 text-on-tertiary-container font-bold border-r border-outline-variant/30">+ Rp. 46.000</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center gap-1.5 text-secondary font-bold">
+<span class="w-2 h-2 bg-secondary rounded-full"></span> Sukses
+                                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-container-padding border-t border-outline-variant flex justify-between items-center bg-surface-container-low/10">
+<p class="font-label-md text-on-surface-variant">Menampilkan 5 dari 1,240 baris data</p>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-on-primary rounded font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded hover:bg-surface-container-low transition-colors bg-surface-container-lowest font-bold">2</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant rounded hover:bg-surface-container-low transition-colors bg-surface-container-lowest font-bold">3</button>
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container-low transition-colors bg-surface-container-lowest">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Atmospheric Grid Effect -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.02] z-[-1]">
+<div class="absolute inset-0" style="background-image: radial-gradient(#0058be 1px, transparent 1px); background-size: 40px 40px;"></div>
+</div>
+<script>
+        // Micro-interactions for KPI cards matching the pattern
+        document.querySelectorAll('section.grid > div').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>
